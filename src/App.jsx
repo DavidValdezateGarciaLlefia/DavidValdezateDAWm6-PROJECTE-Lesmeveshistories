@@ -3,36 +3,18 @@ import './App.css'
 
 import {Button} from "@nextui-org/react";
 import { Camera } from 'lucide-react';
+import { Cards } from './componentes/cards/Cards';
 
 export default function App() {
   return (
     
     <div className="flex flex-wrap gap-4 items-center">
-      <h1>David Valdezate les meves histories main no hist1
-
-      </h1>
-      <Button color="primary" variant="solid">
-        Solid
-      </Button>
-      <Button color="primary" variant="faded">
-        Faded
-      </Button>
-      <Button color="primary" variant="bordered">
-        Bordered
-      </Button>
-      <Button color="primary" variant="light">
-        Light
-      </Button>
-      <Button color="primary" variant="flat">
-        Flat
-      </Button>
-      <Button color="primary" variant="ghost">
-        Ghost
-      </Button>
-      <Button color="primary" variant="shadow">
-        Shadow
-      </Button>
-      <Camera color="red" size={48} />
+      
+      <Cards></Cards>
+      <button className="absolute right-4 bottom-4 h-16 w-16 rounded-full bg-green-500 flex items-center justify-center text-white text-3xl shadow-lg hover:bg-green-600 focus:outline-none"
+                    onClick={() => { console.log("Add new item"); }}>
+                +
+            </button>
     </div>
   );
 }
