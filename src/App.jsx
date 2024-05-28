@@ -8,8 +8,8 @@ export default function App() {
   return (
     
     <div className="flex flex-wrap gap-4 items-center">
-      <h1>David Valdezate les meves histories
-        
+      <h1>David Valdezate les meves histories main no hist1
+
       </h1>
       <Button color="primary" variant="solid">
         Solid
