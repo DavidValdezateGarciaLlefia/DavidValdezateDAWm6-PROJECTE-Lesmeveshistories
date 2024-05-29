@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input, Textarea } from "@nextui-org/react";
-import { Calendar, Pencil, Image as Image } from 'lucide-react';
+import { Calendar, Pencil, Image as ImageIcon } from 'lucide-react';
+import { GlobalContext } from "../../context/globalContext";
 
-export default function ModalForm({ isOpen, onClose, initialData, onSubmit }) {
+export default function ModalForm({ isOpen, onClose, initialData }) {
     const [formData, setFormData] = useState(initialData);
+    const { agregarHistoria, editarHistoria } = useContext(GlobalContext);
 
     useEffect(() => {
         setFormData(initialData);
@@ -16,8 +18,12 @@ export default function ModalForm({ isOpen, onClose, initialData, onSubmit }) {
 
     const controladorEnvio = (e) => {
         e.preventDefault();
-        onSubmit(formData);
-        onClose();  
+        if (formData.id) {
+            editarHistoria(formData.id, formData);
+        } else {
+            agregarHistoria(formData);
+        }
+        onClose();
     };
 
     return (
@@ -25,7 +31,9 @@ export default function ModalForm({ isOpen, onClose, initialData, onSubmit }) {
             <ModalContent>
                 <form onSubmit={controladorEnvio}>
                     <ModalHeader>
-                        {formData.titulo ? `Editar historia "${formData.titulo}"` : "Crear nueva historia"}
+                    <ModalHeader>
+    {formData.id ? `Editar historia` : "Crear nueva historia"}
+</ModalHeader>
                     </ModalHeader>
                     <ModalBody>
                         <Input
@@ -72,7 +80,7 @@ export default function ModalForm({ isOpen, onClose, initialData, onSubmit }) {
                             name="imagen"
                             value={formData.imagen}
                             onChange={controladorFormHistoria}
-                            endContent={<Image className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
+                            endContent={<ImageIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />}
                         />
                     </ModalBody>
                     <ModalFooter>
