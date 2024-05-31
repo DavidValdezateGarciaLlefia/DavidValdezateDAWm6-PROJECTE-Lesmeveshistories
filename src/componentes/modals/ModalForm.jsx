@@ -31,9 +31,7 @@ export default function ModalForm({ isOpen, onClose, initialData }) {
             <ModalContent>
                 <form onSubmit={controladorEnvio}>
                     <ModalHeader>
-                    <ModalHeader>
-    {formData.id ? `Editar historia` : "Crear nueva historia"}
-</ModalHeader>
+                        {formData.id ? `Editar historia: ${formData.titulo}` : `Crear nueva historia: ${formData.titulo || ''}`}
                     </ModalHeader>
                     <ModalBody>
                         <Input

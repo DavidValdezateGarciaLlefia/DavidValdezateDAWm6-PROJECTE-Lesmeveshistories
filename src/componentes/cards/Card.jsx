@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Card, CardHeader, CardFooter, Button, CardBody } from "@nextui-org/react";
 import { Pencil, Trash2 } from 'lucide-react';
 import ModalForm from "../modals/ModalForm";
-import { GlobalContext } from '../../context/globalContext'; // Asegúrate de que la ruta es correcta
+import { GlobalContext } from '../../context/globalContext'; 
 
 export function Tarjeta({ historia }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
